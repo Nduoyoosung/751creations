@@ -1,0 +1,849 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: face;
+  src: url(./assets/fonts/Poppins-ExtraLight.ttf);
+}
+@font-face {
+  font-family: logo;
+  src: url(./assets/fonts/Allura-Regular.ttf);
+}
+@font-face {
+  font-family: paragraph;
+  src: url(./assets/fonts/Ubuntu-Light.ttf);
+}
+@font-face {
+  font-family: links;
+  src: url(./assets/fonts/Poppins-ExtraLight.ttf);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hidden {
+  opacity: 0;
+  transition: .40s linear;
+  transition-delay: calc(.3s * var(--i));
+  transform: translateY(100px);
+}
+
+.hidden.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+p{
+  font-family: paragraph;
+  font-weight: 600;
+  color: #303030;
+}
+h1{
+  font-family: face;
+}
+h2{
+  font-family: face;
+}
+i{
+  font-size: 25px;
+}
+
+
+
+.container{
+  position: relative;
+}
+
+/************* Starting my header *************/
+.header-nav{
+  height: 100vh;
+}
+
+header{
+  width: 100%;
+  padding-top: 30px;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  transition: .5s;
+}
+
+/************* header scroll effect *************/
+header.sticky {
+  background: #ffffff;
+  padding-top: 0;
+}
+header.sticky .open-menu{
+  color: black;
+}
+header.sticky nav ul li a{
+  color: black;
+}
+header.sticky .nav-links li{
+  margin-top: 20px !important;
+  margin-bottom: 14px !important;
+}
+header.sticky .drop-btn-wp{
+  color: #000000;
+}
+
+
+
+/************* header nav-bar *************/
+header nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header nav li a{
+  color: #f3f3f3;
+  text-decoration: none;
+  font-family: links;
+  font-size: 20px;
+}
+
+/************* logo *************/
+.logo a, .logo2 a{
+  font-family: logo;
+  font-size: 40px;
+  font-weight: 500 !important;
+}
+.logo{
+  display: none;
+}
+.logo2{
+  margin-top: 20px !important;
+}
+
+
+/************* header menu items *************/
+header nav .menu .nav-links{
+  display: flex;
+  flex-wrap: wrap;
+}
+.menu li a{
+  font-weight: bold;
+}
+header nav .menu .nav-links li{
+  list-style-type: none;
+  margin: 32px;
+}
+
+header nav .menu .nav-links li a{
+  padding: 12px;
+}
+
+label{
+  padding: 3px;
+  height: 40px;
+  width: 40px;
+  display: none;
+  font-size: 30px;
+}
+input[type=checkbox] {
+  display: none;
+}
+.open-menu{
+  color: white;
+}
+.open-menu .bx{
+  font-size: 30px;
+}
+
+/************* nav drop down *********/
+.dropdown{
+  position: relative;
+}
+
+/*********** dropdowm container ************/
+.drop-content{
+  position: absolute;
+  right: -40%;
+  margin-top: 10px;
+  background: transparent;
+  display: none;
+  z-index: 2;
+}
+
+.drop-btn-wp{
+  color: white;
+}
+/************ drop down items *****************/
+.drop-content span{
+ border-bottom: 1px dotted rgb(0, 0, 0);
+ background-color: white;
+ padding: 10px;
+ padding-left: 35px;
+ padding-right: 35px;
+ opacity: 0;
+ animation: popup .40s ease-in forwards;
+ animation-delay: 0s;
+ text-align: center;
+}
+.drop-content span:nth-child(1){
+    animation-delay: 0s;
+}
+.drop-content span:nth-child(2){
+    animation-delay: 0.33s;
+}
+.drop-content span:nth-child(3){
+    animation-delay: 0.63s;
+}
+.drop-content span:nth-child(4){
+    animation-delay: 0.93s;
+}
+
+@keyframes popup {
+  from{
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to{
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+.drop-content span:hover{
+  background-color: #735B3F;
+}
+.drop-content span:hover a{
+  color: white;
+}
+
+.drop-content span a{
+  padding: 0 !important;
+  margin: 10px;
+  text-align: center;
+  text-transform: lowercase;
+  color: rgb(0, 0, 0);
+}
+
+.dropdown:hover .drop-content{
+  display: flex;
+  flex-direction: column;
+}
+.drop-btn-wp:hover img{
+  transform: rotateX(190deg);
+  transition: all 1s ease;
+}
+
+
+
+/************** landing-page ************/
+
+.landing-page{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+/************ styling my slides *************/
+
+@keyframes slide {
+  /*
+  0%{transform: translateX(0); opacity: 1;}
+  10%{transform: translateX(0); opacity: 1;}
+  18%{transform: translateX(0); opacity: 0;}
+  20%{transform: translateX(-100%); opacity: 0;}
+  30%{transform: translateX(-100%); opacity: 1;}
+  40%{transform: translateX(-100%); opacity: 1;}
+
+
+  45%{transform: translateX(-100%); opacity: 0;}
+  50%{transform: translateX(-200%); opacity: 0;}
+  58%{transform: translateX(-200%); opacity: 1;}
+  60%{transform: translateX(-200%); opacity: 1;}
+  70%{transform: translateX(-200%); opacity: 1;}
+
+
+  80%{transform: translateX(-200%); opacity: 0;}
+  84%{transform: translateX(0); opacity: 0;}
+*/}
+
+/*************** Slideshow container ***************/
+.slideshow-container {
+  position: relative;
+  height: 100vh;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 100%);
+  overflow: hidden;
+  background-color: #917555;
+  z-index: -100;
+}
+
+/************* Next & previous buttons *************/
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/************* Position the "next button" to the right ****************/
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/************** On hover, add a black background color with a little bit see-through **********/
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.mySlides {
+  width: 100%;
+  z-index: -1000;
+}
+.mySlides .slide{
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+  z-index: -100;
+  animation: slide 10s ease-in infinite;
+}
+
+.slide img {
+  width: 100%;
+  height: 180vh;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/************ Caption text ***********/
+.mySlides .text {
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+}
+.mySlides .text h2{
+  color: white;
+  font-size: 40px;
+  text-shadow: 0 3px 3px black;
+  text-transform: capitalize;
+}
+.mySlides .text p{
+  font-size: 20px;
+  color: black;
+}
+
+/************** Number text (1/3 etc) ****************/
+.numbertext {
+  color: #f2f2f2;
+  padding: 8px 12px;
+  position: absolute;
+  top: 33%;
+  font-family: logo;
+  display: flex;
+  flex-direction: column;
+}
+
+.numbertext p{
+  margin: 40px;
+  color: white;
+  margin-left: 0;
+  font-family: logo;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+
+/************ The dots/bullets/indicators 
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+***********/
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/****a little of oyokunyi (intro-text)***/
+.intro-text{
+  text-align: center;
+  width: 70%;
+  margin: auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.intro-text h1{
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+.intro-text p{
+  text-align: left;
+  line-height: 25px;
+}
+
+/****my-works side***/
+.my-works{
+  text-align: center;
+}
+
+/***my-works title*****/
+.title{
+  padding-top: 50px;
+}
+
+/****hr line on top of title***/
+.tl-tp{
+  border: 1px;
+  background-color: #000000;
+  height: 1px;
+  width: 25%;
+  margin: auto;
+}
+
+.work-wrap{
+  width: 85%;
+  padding-top: 20px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.work-wrap .box{
+  width: 32%;
+  text-decoration: none;
+  border-bottom: 1px solid black;
+}
+
+.work-wrap .box .image img{
+  width: 100%;
+  transition: all 0.50s ease-in;
+}
+.work-wrap .box:hover img{
+  opacity: 0.8;
+}
+
+.box .name h2{
+  font-size: 20px;
+}
+.box .name{
+  color: black;
+}
+
+/*****insta-short-link****/
+.insta-short-link{
+  height: 18em;
+  margin-top: 100px;
+  position: relative;
+}
+
+.image-flex, .main-link{
+  height: 18em;
+  display: flex;
+}
+.image-flex .image{
+  width: 25%;
+}
+.image-flex .image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main-link{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: #1615159f;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  flex-direction: column;
+  transition: .40s ease;
+}
+.main-link:hover{
+  background-color: #161515b4;
+}
+.main-link i{
+  transform: rotate(20deg);
+  font-size: 45px;
+}
+.main-link h1{
+  font-weight: 500;
+  font-size: 30px;
+}
+.main-link p{
+  color: white;
+  font-weight: 500;
+}
+
+
+/****footer*****/
+footer{
+  padding-top: 40px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 40px;
+}
+.footer-content-wrap{
+  border-top: 1px solid rgb(0, 0, 0);
+  padding: 10px;
+  display: flex;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+footer .footer-content-wrap .col{
+  width: 30%;
+}
+.footer-content-wrap .col h2{
+  font-weight: 600;
+  color: black;
+}
+
+/***footer quick link section*****/
+.footer-content-wrap .links{
+  padding-bottom: 10px;
+}
+.links li{
+  list-style-type: none;
+  padding-bottom: 10px;
+  margin-top: 20px;
+}
+.links li a{
+  color: black;
+  text-decoration: none;
+  font-family: paragraph;
+  font-weight: 600;
+}
+
+/****footer contact section*****/
+footer .contact-info li{
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+}
+
+footer .contact-info .icon{
+  width: 25px;
+  height: 25px;
+}
+
+/***contact text***/
+footer .contact-info li .text{
+  padding-left: 10px;
+}
+
+/***footer botoom items****/
+.footer-bottom{
+  border-top: 1px solid rgb(0, 0, 0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+
+.footer-bottom .text{
+  color: rgb(175, 175, 175);
+}
+
+/****social links****/
+.footer-bottom .social-link{
+  display: flex;
+}
+.social-link li{
+  list-style-type: none;
+  width: 40px;
+  height: 40px;
+  transition: all 0.60s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.social-link li:hover{
+  transform: translateY(-10px);
+}
+.social-link li a{
+  color: black;
+  font-size: 30px;
+}
+
+/***scroll to top arrow***/
+.up-arrow{
+  background-color: #000000c2;
+  padding: 5px;
+  border-radius: 5px;
+  height: 40px;
+  width: 40px;
+  position: fixed;
+  bottom: 10%;
+  right: 5%;
+}
+.up-arrow img{
+  height: 100%;
+  width: 100%;
+}
+
+
+/****photo gallery****/
+.gallery{
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.gallery .image{
+  width: 31%;
+  margin-top: 20px;
+}
+
+.gallery .image img{
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+
+/*****seee more photo links****/
+.see-more{
+  margin-top: 40px;
+  text-align: center;
+}
+
+.more-links{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 40%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.more-links a{
+  width: 45%;
+  text-decoration: none;
+  color: black;
+  transition: all 0.60s ease;
+}
+.more-links .col{
+  transition-delay: calc(.1s * var(--i));
+}
+.more-links img{
+  width: 15%;
+}
+.more-links a:hover{
+  opacity: 0.7;
+}
+
+
+
+/****about page****/
+.about{
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-bottom: 50px;
+}
+
+/***image**/
+.about .image{
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about .image img{
+  width: 100%;
+  box-shadow: 2px 3px 4px 2px #18120c;
+}
+
+/***about me text area***/
+.about .about-text{
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.about .about-text p{
+  margin-top: 20px;
+  line-height: 25px;
+}
+
+/****buttons***/
+button{
+  cursor: pointer;
+  background-color: #735B3F;
+  padding: 10px;
+  color: white;
+  font-weight: 500;
+  border: none;
+  font-size: large;
+  transition: all 0.60s ease-in;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 20px;
+  font-family: links;
+}
+button:hover{
+  transform: translateY(10px);
+  box-shadow: 2px 3px 4px 2px #18120c;
+}
+button i{
+  font-size: 20px;
+}
+
+
+/****testimonials******/
+.testimonial{
+  border: none solid black;
+  text-align: center;
+  padding-top: 60px;
+}
+
+.testimonial-wrap{
+  border: none solid black;
+  width: 50%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 100%);
+  overflow: hidden;
+}
+.feeds{
+  border: none solid black;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: testimonial 20s ease-in infinite;
+  animation-delay: 5s;
+}
+.feeds .image{
+  border: none solid black;
+  width: 16%;
+  height: 100px;
+}
+.feeds .image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: none solid black;
+  box-shadow: 0 0 2px 2px grey;
+}
+
+.feeds .text{
+  border: none solid black;
+  padding-top: 20px;
+  font-size: larger;
+}
+.feeds .text h3{
+  margin-top: 10px;
+  color: #735B3F;
+  font-family: face;
+  text-transform: uppercase;
+}
+@keyframes testimonial {
+  0%{transform: translateX(0); opacity: 1;}
+  10%{transform: translateX(0); opacity: 1;}
+  18%{transform: translateX(0); opacity: 0;}
+  20%{transform: translateX(-100%); opacity: 0;}
+  30%{transform: translateX(-100%); opacity: 1;}
+  40%{transform: translateX(-100%); opacity: 1;}
+
+
+  45%{transform: translateX(-100%); opacity: 0;}
+  50%{transform: translateX(-200%); opacity: 0;}
+  58%{transform: translateX(-200%); opacity: 1;}
+  60%{transform: translateX(-200%); opacity: 1;}
+  70%{transform: translateX(-200%); opacity: 1;}
+  75%{transform: translateX(-200%); opacity: 1;}
+  
+  80%{transform: translateX(-200%); opacity: 0;}
+  84%{transform: translateX(0); opacity: 0;}
+}
+
+
+
+/************ commercial page image *************/
+.gallery .long-cm-img{
+  width: 100%;
+  margin-top: 20px;
+}
+.gallery .long-cm-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery .sml-cm-img{
+  width: 49%;
+  margin-top: 20px;
+}
+.gallery .sml-cm-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+/************ services page *************/
+
+.service-page{
+  border: none solid black;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url(./assets/potrait/cinescope-creative-OtJZGvBNaxA-unsplash\ \(2\).jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  text-align: center;
+}
+.service-page h2{
+  color: white;
+  font-size: 40px;
+  text-shadow: 0 3px 3px black;
+  text-transform: capitalize;
+}
+/************ Caption text ***********/
+.service-page p{
+  font-size: 20px;
+  color: black;
+  font-weight: 600;
+}
